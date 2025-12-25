@@ -31,7 +31,7 @@
   .cm-container{
     max-width: var(--container);
     margin: 0 auto;
-    padding: 28px 20px;
+    padding: 44px 22px;
   }
 
   /* “Script léger” sans dépendre d’une font externe (Elementor peut en charger une si tu veux) */
@@ -137,10 +137,10 @@
 
   /* Hero */
   .cm-hero{
-    padding: 18px 0 18px;
+    padding: 26px 0 30px;
     display:grid;
     grid-template-columns: 1.2fr .8fr;
-    gap: 22px;
+    gap: 30px;
     align-items:stretch;
   }
   .cm-hero h1{
@@ -150,7 +150,7 @@
     letter-spacing: -0.8px;
   }
   .cm-hero p{
-    margin: 10px 0 18px;
+    margin: 14px 0 26px;
     color: var(--muted);
     font-size: 16px;
     max-width: 58ch;
@@ -160,7 +160,7 @@
     border: 1px solid rgba(31,31,31,.08);
     border-radius: var(--radius);
     box-shadow: var(--shadow-soft);
-    padding: 18px;
+    padding: 26px;
   }
   .cm-hero-actions{
     display:flex;
@@ -228,7 +228,9 @@
   .cm-placeholder b{ color: var(--ink); }
 
   /* Sections */
-  .cm-section{ padding: 42px 0; }
+  .cm-section{
+    padding: 64px 0;
+  }
   .cm-section h2{
     font-size: clamp(24px, 3vw, 34px);
     margin: 0 0 12px;
@@ -243,13 +245,13 @@
   .cm-grid-3{
     display:grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    gap: 18px;
   }
   .cm-card{
     background: rgba(250,249,247,.75);
     border: 1px solid rgba(31,31,31,.08);
     border-radius: var(--radius);
-    padding: 18px;
+    padding: 24px;
     box-shadow: var(--shadow-soft);
   }
   .cm-card h3{
@@ -275,7 +277,7 @@
   .cm-beforeafter{
     display:grid;
     grid-template-columns: 1fr 1fr;
-    gap: 14px;
+    gap: 18px;
   }
   .cm-badge{
     display:inline-flex;
@@ -294,7 +296,7 @@
     padding-left: 18px;
     color: var(--muted);
   }
-  .cm-list li{ margin: 8px 0; }
+  .cm-list li{ margin: 10px 0; }
 
   /* Testimonials */
   .cm-quote{
@@ -319,7 +321,7 @@
   .cm-pricing{
     display:grid;
     grid-template-columns: 1.05fr .95fr;
-    gap: 14px;
+    gap: 18px;
     align-items:stretch;
   }
   .cm-pricebox{
@@ -391,20 +393,20 @@
   .cm-bonus{
     display:grid;
     grid-template-columns: 1fr 1fr;
-    gap: 14px;
+    gap: 18px;
   }
 
   /* FAQ */
   .cm-faq{
     display:grid;
     grid-template-columns: 1fr 1fr;
-    gap: 14px;
+    gap: 18px;
   }
   details.cm-acc{
     background: rgba(250,249,247,.75);
     border: 1px solid rgba(31,31,31,.08);
     border-radius: var(--radius);
-    padding: 14px 16px;
+    padding: 18px 18px;
     box-shadow: var(--shadow-soft);
   }
   details.cm-acc summary{
@@ -420,9 +422,14 @@
     font-size: 14px;
   }
 
+  .cm-section h2{ margin: 0 0 16px; }
+  .cm-section p.lead{ margin: 0 0 28px; line-height: 1.75; }
+  .cm-hero-actions{ margin-top: 22px; }
+  .cm-trust{ margin-top: 18px; }
+
   /* Footer */
   .cm-footer{
-    padding: 30px 0 46px;
+    padding: 44px 0 62px;
     color: var(--muted);
     font-size: 13px;
   }
