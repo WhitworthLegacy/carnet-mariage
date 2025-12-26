@@ -1,6 +1,12 @@
 <!-- CarnetMariage.com — Landing 1 page (HTML/CSS) -->
 <!-- Colle tout dans un widget Elementor "HTML" (sur une page full-width). -->
 
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+
+
 <style>
   :root{
     --ivory:#FAF9F7;
@@ -25,8 +31,10 @@
                 radial-gradient(900px 500px at 90% 15%, rgba(201,204,214,.55), transparent 55%),
                 var(--ivory);
     color: var(--ink);
-    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    font-family: "Libre Baskerville", Georgia, "Times New Roman", serif;
     line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   .cm-container{
     max-width: var(--container);
@@ -36,7 +44,7 @@
 
   /* “Script léger” sans dépendre d’une font externe (Elementor peut en charger une si tu veux) */
   .cm-script{
-    font-family: ui-serif, "Times New Roman", Georgia, serif;
+    font-family: "Libre Baskerville", Georgia, serif;
     font-style: italic;
     letter-spacing: .2px;
   }
@@ -512,6 +520,33 @@
 }
 .cm-footer-bottom .cm-mini a{ font-size: 12.5px; }
 
+  /* Petit texte en sans-serif pour respirer (premium) */
+.cm-nav a,
+.cm-pill,
+.cm-trust small,
+.cm-card p,
+.cm-quote,
+.cm-person,
+.cm-footer,
+.cm-footer-links,
+.cm-footer-desc,
+.cm-note,
+details.cm-acc p,
+.cm-mock-title span{
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans";
+}
+
+  .cm-logo{
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    object-fit: contain;
+    background: rgba(250,249,247,.85);
+    border: 1px solid rgba(31,31,31,.06);
+    box-shadow: var(--shadow-soft);
+    padding: 6px;
+  }
+
 @media (max-width: 980px){
   .cm-footer-grid{ grid-template-columns: 1fr 1fr; }
 }
@@ -599,7 +634,7 @@
     <!-- Topbar -->
     <div class="cm-topbar">
       <a class="cm-brand" href="#top">
-        <div class="cm-mark">CM</div>
+          <div class="cm-mark">CM</div>
         <div>
           <strong>CarnetMariage</strong>
           <span>Planner Notion · calme & organisé</span>
