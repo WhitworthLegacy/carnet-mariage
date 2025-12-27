@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Digital Clock</title>
+
+<style>
+  :root {
+    --ivory: #FAF9F7;
+    --blush: #EAD4D8;
+    --greige: #C7BEB8;
+    --silver: #C9CCD6;
+    --rose: #D8A7B1;
+  }
+
+  body {
+    background: var(--ivory);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  }
+
+  .clock {
+    background: var(--blush);
+    border-radius: 22px;
+    padding: 28px 32px;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    min-width: 180px;
+  }
+
+  .time {
+    font-size: 56px;
+    font-weight: 600;
+    color: #1f1f1f;
+    letter-spacing: 2px;
+  }
+
+  .day {
+    margin-top: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--greige);
+  }
+
+  .accent {
+    width: 36px;
+    height: 4px;
+    background: var(--rose);
+    border-radius: 10px;
+    margin: 14px auto 0;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="clock">
+  <div class="time" id="time">00:00</div>
+  <div class="day" id="day">Lundi</div>
+  <div class="accent"></div>
+</div>
+
+<script>
+  function updateClock() {
+    const now = new Date();
+
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+
+    const days = [
+      "Dimanche", "Lundi", "Mardi", "Mercredi",
+      "Jeudi", "Vendredi", "Samedi"
+    ];
+
+    document.getElementById("time").textContent = `${hours}:${minutes}`;
+    document.getElementById("day").textContent = days[now.getDay()];
+  }
+
+  updateClock();
+  setInterval(updateClock, 1000);
+</script>
+
+</body>
+</html>
