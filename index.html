@@ -1,258 +1,87 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Wedding Countdown</title>
+<meta charset="UTF-8">
+<title>Digital Clock</title>
 
 <style>
-:root{
-  --ink:#111;
-  --muted:#6b6b6b;
-  --line:#e9e9e9;
-  --card:#fff;
-  --radius:18px;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-  background:#fafafa;
-  color:var(--ink);
-}
-.wrap{
-  max-width:900px;
-  margin:auto;
-  padding:32px 16px 60px;
-}
-.card{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  padding:24px;
-}
-.hero{
-  margin-bottom:24px;
-}
-.hero h1{
-  font-size:32px;
-  margin:0;
-}
-.hero p{
-  color:var(--muted);
-  margin-top:8px;
-  line-height:1.5;
-}
-.pills{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:14px;
-}
-.pill{
-  border:1px solid var(--line);
-  padding:8px 12px;
-  border-radius:999px;
-  font-size:13px;
-  background:#fff;
-}
+  :root {
+    --ivory: #FAF9F7;
+    --blush: #EAD4D8;
+    --greige: #C7BEB8;
+    --silver: #C9CCD6;
+    --rose: #D8A7B1;
+  }
 
-.row{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
-.field{
-  flex:1;
-  min-width:220px;
-}
-label{
-  font-size:13px;
-  color:var(--muted);
-}
-input{
-  width:100%;
-  padding:12px;
-  border-radius:12px;
-  border:1px solid var(--line);
-  font-size:14px;
-}
+  body {
+    background: var(--ivory);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  }
 
-.actions{
-  display:flex;
-  gap:10px;
-  margin-top:14px;
-  flex-wrap:wrap;
-}
-button{
-  padding:12px 16px;
-  border-radius:12px;
-  border:1px solid var(--ink);
-  background:var(--ink);
-  color:#fff;
-  font-weight:600;
-  cursor:pointer;
-}
-button.secondary{
-  background:#fff;
-  color:var(--ink);
-  border:1px solid var(--line);
-}
+  .clock {
+    background: var(--blush);
+    border-radius: 22px;
+    padding: 28px 32px;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    min-width: 180px;
+  }
 
-.notice{
-  margin-top:16px;
-  padding:12px;
-  border-radius:12px;
-  background:#f7f7f7;
-  border:1px solid var(--line);
-  font-weight:600;
-}
+  .time {
+    font-size: 56px;
+    font-weight: 600;
+    color: #1f1f1f;
+    letter-spacing: 2px;
+  }
 
-.countdown{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:16px;
-}
-.box{
-  width:90px;
-  height:90px;
-  border:3px solid var(--ink);
-  border-radius:12px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-}
-.box .n{
-  font-size:22px;
-  font-weight:800;
-}
-.box .t{
-  font-size:12px;
-  color:var(--muted);
-  font-weight:700;
-}
+  .day {
+    margin-top: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--greige);
+  }
+
+  .accent {
+    width: 36px;
+    height: 4px;
+    background: var(--rose);
+    border-radius: 10px;
+    margin: 14px auto 0;
+  }
 </style>
 </head>
 
 <body>
-<div class="wrap">
 
-  <!-- HERO -->
-  <div class="card hero">
-    <h1>✨ Ton mariage, organisé en douceur ✨</h1>
-    <p>
-      Entre ta date, et le planner te montre immédiatement le temps restant.
-      La checklist et la progression sont gérées dans Notion.
-    </p>
-    <div class="pills">
-      <div class="pill">👑 Mode PRO Dashboard</div>
-      <div class="pill">⏳ Countdown live</div>
-      <div class="pill">✅ Planner Notion</div>
-    </div>
-  </div>
-
-  <!-- DATE + COUNTDOWN -->
-  <div class="card">
-    <h2>Quelle est la date de ton mariage ?</h2>
-
-    <div class="row">
-      <div class="field">
-        <label>Date du mariage</label>
-        <input type="date" id="date">
-      </div>
-      <div class="field">
-        <label>Noms des mariés (optionnel)</label>
-        <input type="text" id="names" placeholder="Ex : Arnaud & Sophie">
-      </div>
-    </div>
-
-    <div class="actions">
-      <button id="save">💾 Sauvegarder</button>
-      <button class="secondary" id="share">🔗 Générer un lien</button>
-    </div>
-
-    <div class="notice" id="text">
-      ⏳ Entre une date pour voir le temps restant.
-    </div>
-
-    <div class="countdown">
-      <div class="box"><div class="n" id="d">—</div><div class="t">jours</div></div>
-      <div class="box"><div class="n" id="h">—</div><div class="t">heures</div></div>
-      <div class="box"><div class="n" id="m">—</div><div class="t">mins</div></div>
-      <div class="box"><div class="n" id="s">—</div><div class="t">secs</div></div>
-    </div>
-  </div>
-
+<div class="clock">
+  <div class="time" id="time">00:00</div>
+  <div class="day" id="day">Lundi</div>
+  <div class="accent"></div>
 </div>
 
 <script>
-const $ = id => document.getElementById(id);
-const KEY = "wedding_date_v1";
+  function updateClock() {
+    const now = new Date();
 
-function load(){
-  const url = new URL(location.href);
-  const d = url.searchParams.get("date") || localStorage.getItem(KEY);
-  const n = url.searchParams.get("name");
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
 
-  if(d) $("date").value = d;
-  if(n) $("names").value = decodeURIComponent(n);
-}
+    const days = [
+      "Dimanche", "Lundi", "Mardi", "Mercredi",
+      "Jeudi", "Vendredi", "Samedi"
+    ];
 
-function save(){
-  const d = $("date").value;
-  if(!d) return alert("Choisis une date");
-  localStorage.setItem(KEY, d);
-  update();
-}
-
-function share(){
-  const url = new URL(location.href);
-  url.searchParams.set("date", $("date").value);
-  if($("names").value) url.searchParams.set("name", encodeURIComponent($("names").value));
-  navigator.clipboard.writeText(url.toString());
-  alert("Lien copié ✅");
-}
-
-function update(){
-  const d = $("date").value;
-  if(!d){
-    $("text").textContent = "⏳ Entre une date pour voir le temps restant.";
-    return;
+    document.getElementById("time").textContent = `${hours}:${minutes}`;
+    document.getElementById("day").textContent = days[now.getDay()];
   }
 
-  const target = new Date(d+"T00:00:00");
-  const now = new Date();
-  const diff = target - now;
-
-  if(diff <= 0){
-    $("text").textContent = "🎉 C’est le jour J !";
-    ["d","h","m","s"].forEach(id => $(id).textContent = "0");
-    return;
-  }
-
-  const sec = Math.floor(diff/1000);
-  const days = Math.floor(sec/86400);
-  const hrs = Math.floor(sec%86400/3600);
-  const mins = Math.floor(sec%3600/60);
-  const secs = sec%60;
-
-  $("d").textContent = days;
-  $("h").textContent = String(hrs).padStart(2,"0");
-  $("m").textContent = String(mins).padStart(2,"0");
-  $("s").textContent = String(secs).padStart(2,"0");
-
-  $("text").textContent = `⏳ Il te reste ${days} jours avant le Jour J.`;
-}
-
-$("save").onclick = save;
-$("share").onclick = share;
-$("date").onchange = save;
-
-load();
-update();
-setInterval(update, 1000);
+  updateClock();
+  setInterval(updateClock, 1000);
 </script>
 
 </body>
