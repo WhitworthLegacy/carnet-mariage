@@ -1,0 +1,76 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+
+.cmOB{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  min-height:90vh;
+  display:grid;
+  place-items:center;
+  padding:28px 18px;
+  background:
+    radial-gradient(1200px 600px at 20% 0%, rgba(234,212,216,.55), transparent 60%),
+    radial-gradient(900px 520px at 90% 10%, rgba(201,204,214,.55), transparent 55%),
+    #FAF9F7;
+  font-family:"Libre Baskerville", Georgia, serif;
+}
+
+.cmOB-card{
+  width:min(760px,100%);
+  background:rgba(250,249,247,.9);
+  border-radius:26px;
+  padding:26px;
+  box-shadow:0 18px 40px rgba(0,0,0,.08);
+}
+
+.cmOB-box{
+  background:white;
+  border-radius:16px;
+  padding:14px;
+  margin-top:10px;
+  font-family:system-ui;
+  font-size:14px;
+}
+
+.cmOB-btn{
+  margin-top:18px;
+  padding:14px 20px;
+  border-radius:999px;
+  border:none;
+  background:linear-gradient(180deg,#D8A7B1,#EAD4D8);
+  font-weight:600;
+  cursor:pointer;
+}
+</style>
+
+<div class="cmOB">
+  <div class="cmOB-card">
+    <h1>Votre carnet est prêt ✨</h1>
+    <p style="font-family:system-ui;color:#5d5d5d;">
+      Dernière étape avant votre espace personnel.
+    </p>
+
+    <div id="summary"></div>
+
+    <button class="cmOB-btn" id="pay">
+      Débloquer mon carnet · 27€
+    </button>
+  </div>
+</div>
+
+<script>
+(function(){
+  const data = JSON.parse(localStorage.getItem("cm_onboarding") || "{}");
+
+  const s = document.getElementById("summary");
+  s.innerHTML = `
+    <div class="cmOB-box"><b>Couple</b><br>${data.prenom1 || "—"} & ${data.prenom2 || "—"}</div>
+    <div class="cmOB-box"><b>Date</b><br>${data.weddingDate || "—"}</div>
+    <div class="cmOB-box"><b>Email</b><br>${data.email || "—"}</div>
+  `;
+
+  document.getElementById("pay").onclick = ()=>{
+    alert("Stripe sera branché ici (ok MVP)");
+  };
+})();
+</script>
