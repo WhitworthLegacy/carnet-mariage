@@ -35,13 +35,34 @@
 }
 
 .cmOB-btn{
-  margin-top:18px;
-  padding:14px 20px;
+  margin-top:16px;
+  width:100%;
+  padding:16px 22px;
   border-radius:999px;
-  border:none;
-  background:linear-gradient(180deg,#D8A7B1,#EAD4D8);
-  font-weight:600;
+  border: 1px solid rgba(31,31,31,.10);
+  background: linear-gradient(180deg, rgba(216,167,177,.98), rgba(234,212,216,.90));
+  color: rgba(31,31,31,.92);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  font-size: 15.5px;
+  font-weight: 650;
+  letter-spacing: .2px;
   cursor:pointer;
+  box-shadow: 0 14px 34px rgba(216,167,177,.35), 0 10px 26px rgba(0,0,0,.06);
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+
+.cmOB-btn:hover{
+  filter: brightness(1.01);
+  box-shadow: 0 18px 44px rgba(216,167,177,.45), 0 12px 30px rgba(0,0,0,.08);
+}
+
+.cmOB-btn:active{
+  transform: translateY(1px);
+}
+
+.cmOB-btn:focus{
+  outline:none;
+  box-shadow: 0 0 0 4px rgba(216,167,177,.22), 0 18px 44px rgba(216,167,177,.40);
 }
 
 /* ===== Animations douces ===== */
@@ -106,9 +127,65 @@
   border-radius: 999px;
 }
 
+.cm-demo{
+  position:fixed;
+  inset:0;
+  background:rgba(250,249,247,.92);
+  backdrop-filter: blur(6px);
+  display:grid;
+  place-items:center;
+  z-index:9999;
+}
+.cm-demo.hidden{ display:none; }
+
+.cm-demo-content{
+  width:min(760px,100%);
+  background:white;
+  border-radius:22px;
+  padding:24px;
+  box-shadow:0 20px 60px rgba(0,0,0,.15);
+  text-align:center;
+  font-family:system-ui;
+
+}
+
+.cm-demo-link{
+  display:block;
+  width:100%;
+  margin-top:10px;
+  text-align:center;
+
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  font-size:14px;
+  color: rgba(31,31,31,.6);
+
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+
+  cursor:pointer;
+  transition: color .15s ease, opacity .15s ease;
+}
+
+.cm-demo-link:hover{
+  color: rgba(31,31,31,.95);
+  opacity:.9;
+}
+
+.cm-micro{
+  margin-top:6px;
+  text-align:center;
+
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  font-size:12.5px;
+  color: rgba(31,31,31,.55);
+  letter-spacing:.2px;
+}
+
 @media (max-width:640px){
   .cm-preview{ grid-template-columns: 1fr; }
 }
+
 
 </style>
 
@@ -167,11 +244,30 @@
   Tout est prêt. Il ne reste plus qu’à débloquer votre espace.
 </p>
 
+
+<div id="cmDemo" class="cm-demo hidden">
+  <div class="cm-demo-content">
+    <div id="cmDemoStep"></div>
+    <button id="cmDemoNext">Continuer</button>
+  </div>
+</div>
+
     <button class="cmOB-btn cm-appear cm-delay-3" id="pay">
       Je veux organiser sereinement · 27€
     </button>
+
+    
+    <div class="cm-micro cm-appear cm-delay-3">
+      Paiement unique · Accès immédiat · Sans abonnement
+    </div>
+
+    <a href="#" class="cm-demo-link" id="openDemo">
+      👀 Voir comment ça se passe concrètement (1 min)
+    </a>
+
   </div>
 </div>
+
 
 <script>
 (function(){
@@ -188,4 +284,46 @@
     alert("Stripe sera branché ici (ok MVP)");
   };
 })();
+
+
+(function(){
+  const steps = [
+    {
+      html:`<h2>Votre espace personnel</h2>
+            <p>Tout est déjà organisé pour vous guider, sans surcharge.</p>`
+    },
+    {
+      html:`<h2>Le budget</h2>
+            <p>Vous voyez ce qui est prévu, payé et restant.</p>`
+    },
+    {
+      html:`<h2>La timeline</h2>
+            <p>Chaque mois, vous savez exactement quoi faire.</p>`
+    },
+    {
+      html:`<h2>C’est prêt ✨</h2>
+            <p>Il suffit maintenant de débloquer votre carnet.</p>`
+    }
+  ];
+
+  let i = 0;
+  const modal = document.getElementById("cmDemo");
+  const stepBox = document.getElementById("cmDemoStep");
+
+  document.getElementById("openDemo").onclick = ()=>{
+    modal.classList.remove("hidden");
+    stepBox.innerHTML = steps[0].html;
+  };
+
+  document.getElementById("cmDemoNext").onclick = ()=>{
+    i++;
+    if(i >= steps.length){
+      modal.classList.add("hidden");
+      i = 0;
+      return;
+    }
+    stepBox.innerHTML = steps[i].html;
+  };
+})();
+
 </script>
