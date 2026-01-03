@@ -161,7 +161,7 @@
 <script>
 (function(){
   const prevUrl = "/";
-  const nextUrl = "/onboarding/2";
+  const nextUrl = "/onboarding-2";
 
   const p1 = document.getElementById("cmOB1P1");
   const p2 = document.getElementById("cmOB1P2");
