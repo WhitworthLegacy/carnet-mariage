@@ -1,8 +1,6 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+
   :root{
     --ivory:#FAF9F7; --blush:#EAD4D8; --greige:#C7BEB8; --silver:#C9CCD6; --cta:#D8A7B1;
     --ink:#1f1f1f; --muted:#5d5d5d;
@@ -10,10 +8,20 @@
     --shadow: 0 16px 44px rgba(0,0,0,.10);
     --shadow-soft: 0 10px 26px rgba(0,0,0,.06);
   }
+
+  html, body{ height:100%; overflow-x:hidden; }
+
   .cm{
+    /* ✅ full-bleed pour casser le wrapper Elementor */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+
+    /* ✅ remplit l'écran */
     min-height: 100vh;
     min-height: 100svh;
     min-height: 100dvh;
+
     background:
       radial-gradient(1200px 600px at 20% 0%, rgba(234,212,216,.58), transparent 60%),
       radial-gradient(900px 520px at 90% 10%, rgba(201,204,214,.55), transparent 55%),
@@ -24,6 +32,7 @@
     place-items:center;
     padding: 28px 18px;
   }
+
   .cm-card{
     width: min(760px, 100%);
     background: rgba(250,249,247,.85);
@@ -32,6 +41,7 @@
     box-shadow: var(--shadow);
     padding: 26px;
   }
+
   .cm-pill{
     display:inline-flex; gap: 8px; align-items:center;
     padding: 8px 12px; border-radius: 999px;
@@ -41,12 +51,14 @@
     font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
     font-size: 13px;
   }
-  h1{
+
+  .cm h1{
     margin: 14px 0 10px;
     font-size: clamp(28px, 4vw, 42px);
     line-height: 1.08;
     letter-spacing: -0.6px;
   }
+
   .cm-lead{
     margin: 0 0 18px;
     color: var(--muted);
@@ -55,6 +67,7 @@
     line-height: 1.8;
     max-width: 62ch;
   }
+
   .cm-row{
     display:grid;
     grid-template-columns: 1fr auto;
@@ -62,14 +75,16 @@
     margin-top: 10px;
     align-items:end;
   }
-  label{
+
+  .cm label{
     display:block;
     margin-bottom: 8px;
     color: rgba(0,0,0,.72);
     font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
     font-size: 13px;
   }
-  input{
+
+  .cm input{
     width:100%;
     padding: 14px 14px;
     border-radius: 16px;
@@ -79,10 +94,12 @@
     font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
     font-size: 16px;
   }
-  input:focus{
+
+  .cm input:focus{
     border-color: rgba(216,167,177,.95);
     box-shadow: 0 0 0 4px rgba(216,167,177,.18);
   }
+
   .cm-btn{
     display:inline-flex; align-items:center; justify-content:center; gap: 10px;
     padding: 14px 18px;
@@ -98,7 +115,9 @@
     background: linear-gradient(180deg, rgba(216,167,177,.98), rgba(216,167,177,.88));
     box-shadow: var(--shadow-soft);
   }
+
   .cm-btn:active{ transform: translateY(1px); }
+
   .cm-note{
     margin-top: 14px;
     color: var(--muted);
@@ -106,6 +125,7 @@
     font-size: 12.8px;
     line-height:1.7;
   }
+
   .cm-error{
     margin-top: 10px;
     color: rgba(0,0,0,.72);
