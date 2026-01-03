@@ -189,16 +189,24 @@ html, body{ height:100%; overflow-x:hidden; }
   const prevUrl = "/onboarding-1";
   const nextUrl = "/onboarding-3";
 
-  const data = safeGet();
-  if(!data.weddingDate || !data.prenom1 || !data.prenom2){
-    window.location.href = prevUrl;
-    return;
+  let data = {};
+  try{
+    data = JSON.parse(localStorage.getItem("cm_onboarding") || "{}");
+  }catch(e){
+    data = {};
   }
 
   const backBtn = document.getElementById("cmOB2Back");
   const nextBtn = document.getElementById("cmOB2Next");
   const emailEl = document.getElementById("cmOB2Email");
   const errEl   = document.getElementById("cmOB2Err");
+
+  // 🔐 Sécurité douce (PAS de redirect brutal)
+  if(!data.weddingDate){
+    console.warn("No wedding date, returning to start");
+    window.location.href = "/";
+    return;
+  }
 
   if(data.email) emailEl.value = data.email;
 
@@ -209,20 +217,32 @@ html, body{ height:100%; overflow-x:hidden; }
 
   function submit(){
     const v = (emailEl.value || "").trim();
+
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){
       errEl.classList.add("show");
       return;
     }
+
     errEl.classList.remove("show");
+
     data.email = v.toLowerCase();
-    safeSet(data);
+
+    try{
+      localStorage.setItem("cm_onboarding", JSON.stringify(data));
+    }catch(e){
+      console.warn("localStorage blocked", e);
+    }
+
     window.location.href = nextUrl;
   }
 
   nextBtn.addEventListener("click", submit);
-  emailEl.addEventListener("keydown", (e)=>{ if(e.key==="Enter"){ e.preventDefault(); submit(); } });
 
-  function safeGet(){ try{ return JSON.parse(localStorage.getItem("cm_onboarding")||"{}"); }catch(e){ return {}; } }
-  function safeSet(o){ try{ localStorage.setItem("cm_onboarding", JSON.stringify(o)); }catch(e){} }
+  emailEl.addEventListener("keydown", (e)=>{
+    if(e.key === "Enter"){
+      e.preventDefault();
+      submit();
+    }
+  });
 })();
 </script>
