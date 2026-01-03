@@ -62,6 +62,54 @@
   }
 }
 
+/* ===== Aperçu carnet (locked) ===== */
+.cm-preview{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.cm-preview-card{
+  position:relative;
+  background: rgba(250,249,247,.85);
+  border: 1px solid rgba(31,31,31,.08);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 8px 22px rgba(0,0,0,.05);
+  font-family: system-ui;
+}
+
+.cm-preview-title{
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.cm-preview-card p{
+  font-size: 13.5px;
+  color: #5d5d5d;
+  line-height: 1.6;
+}
+
+.cm-preview-card.locked{
+  filter: blur(.2px);
+}
+
+.cm-lock{
+  display:inline-block;
+  margin-top: 10px;
+  font-size: 12px;
+  color: rgba(0,0,0,.6);
+  background: rgba(216,167,177,.25);
+  border: 1px solid rgba(216,167,177,.35);
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+@media (max-width:640px){
+  .cm-preview{ grid-template-columns: 1fr; }
+}
+
 </style>
 
 <div class="cmOB">
@@ -76,6 +124,48 @@
 
     <div id="summary" class="cm-appear cm-delay-3"></div>
 
+
+    <h2 class="cm-appear cm-delay-3" style="margin-top:28px;">
+      À quoi va ressembler votre carnet ✨
+    </h2>
+    
+    <p class="cm-appear cm-delay-3" style="font-family:system-ui;color:#5d5d5d;max-width:60ch;">
+      Voici un aperçu de votre espace personnel.
+      Tout est déjà pensé pour vous guider, sans surcharge mentale.
+    </p>
+
+    <div class="cm-preview cm-appear cm-delay-3">
+
+      <div class="cm-preview-card locked">
+        <div class="cm-preview-title">💸 Budget</div>
+        <p>Visualisez ce qui est prévu, payé et restant.</p>
+        <span class="cm-lock">🔒 Débloqué après accès</span>
+      </div>
+    
+      <div class="cm-preview-card locked">
+        <div class="cm-preview-title">🗓️ Timeline</div>
+        <p>Sachez exactement quoi faire, au bon moment.</p>
+        <span class="cm-lock">🔒 Débloqué après accès</span>
+      </div>
+    
+      <div class="cm-preview-card locked">
+        <div class="cm-preview-title">🤝 Prestataires</div>
+        <p>Gardez une vue claire sur vos contacts et décisions.</p>
+        <span class="cm-lock">🔒 Débloqué après accès</span>
+      </div>
+    
+      <div class="cm-preview-card locked">
+        <div class="cm-preview-title">✅ Tâches</div>
+        <p>Avancez étape par étape, sans rien oublier.</p>
+        <span class="cm-lock">🔒 Débloqué après accès</span>
+      </div>
+    
+    </div>
+
+
+<p class="cm-appear cm-delay-3" style="margin-top:20px;font-family:system-ui;color:#5d5d5d;">
+  Tout est prêt. Il ne reste plus qu’à débloquer votre espace.
+</p>
 
     <button class="cmOB-btn cm-appear cm-delay-3" id="pay">
       Je veux organiser sereinement · 27€
