@@ -1,11 +1,9 @@
 <!-- CarnetMariage.com — Landing 1 page (HTML/CSS) -->
 <!-- Colle tout dans un widget Elementor "HTML" (sur une page full-width). -->
 
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-
 
 <style>
   :root{
@@ -36,31 +34,31 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
   /* Global link color reset inside CarnetMariage block */
   .cm-wrap a,
   .cm-wrap a:visited{
     color: var(--muted);
     text-decoration: none;
   }
-  
   .cm-wrap a:hover{
     color: var(--muted);
     text-decoration: underline;
   }
-  
+
   /* Keep buttons unchanged */
   .cm-wrap a.cm-btn,
   .cm-wrap a.cm-btn:visited{
     color: inherit;
     text-decoration: none;
   }
+
   .cm-container{
     max-width: var(--container);
     margin: 0 auto;
     padding: 44px 22px;
   }
 
-  /* “Script léger” sans dépendre d’une font externe (Elementor peut en charger une si tu veux) */
   .cm-script{
     font-family: "Libre Baskerville", Georgia, serif;
     font-style: italic;
@@ -239,24 +237,15 @@
     width:10px;height:10px;border-radius:999px;display:inline-block;
     background: rgba(31,31,31,.14);
   }
-  .cm-mock .cm-placeholder{
-    height: 260px;
-    border-radius: 18px;
-    background: linear-gradient(180deg, rgba(234,212,216,.25), rgba(201,204,214,.25));
-    border: 1px dashed rgba(31,31,31,.18);
-    display:grid;
-    place-items:center;
-    color: var(--muted);
-    text-align:center;
-    padding: 14px;
+  .cm-mock img{
+    display:block;
+    width:100%;
+    margin-top: 12px;
   }
-  .cm-placeholder b{ color: var(--ink); }
+  .cm-mock img:first-of-type{ margin-top: 0; }
 
   /* Sections */
-  .cm-section{
-    padding: 64px 0;
-
-  }
+  .cm-section{ padding: 64px 0; }
   .cm-section h2{
     font-size: clamp(24px, 3vw, 34px);
     margin: 0 0 12px;
@@ -453,126 +442,165 @@
   .cm-hero-actions{ margin-top: 22px; }
   .cm-trust{ margin-top: 18px; }
 
-.cm-mock img{
-  display:block;
-  width:100%;
-  margin-top: 12px;
-}
-.cm-mock img:first-of-type{ margin-top: 0; }
-
-/* ===== Footer SEO ===== */
-.cm-footer-wrap{
-  margin-top: 20px;
-  padding: 70px 0 64px;
-  border-top: 1px solid rgba(31,31,31,.08);
-  background:
-    radial-gradient(900px 380px at 15% 0%, rgba(234,212,216,.45), transparent 60%),
-    radial-gradient(900px 380px at 90% 10%, rgba(201,204,214,.45), transparent 60%),
-    rgba(250,249,247,.65);
-}
-.cm-footer-grid{
-  display:grid;
-  grid-template-columns: 1.2fr .9fr .9fr .9fr;
-  gap: 22px;
-}
-.cm-footer h3{
-  margin: 0 0 12px;
-  font-size: 14px;
-  letter-spacing: .2px;
-}
-.cm-footer a{
-  color: var(--muted);
-  text-decoration:none;
-}
-.cm-footer a:hover{ color: var(--ink); text-decoration:underline; }
-.cm-footer-links{
-  margin:0; padding:0; list-style:none;
-  display:flex; flex-direction:column; gap: 10px;
-  color: var(--muted);
-  font-size: 13.5px;
-}
-.cm-footer-brand{
-  display:flex; gap: 12px; align-items:flex-start;
-}
-.cm-footer-brand .cm-mark{ flex: 0 0 auto; }
-.cm-footer-desc{
-  margin: 10px 0 0;
-  color: var(--muted);
-  font-size: 13.5px;
-  line-height: 1.75;
-}
-.cm-footer-badges{
-  display:flex; flex-wrap:wrap; gap: 10px;
-  margin-top: 14px;
-}
-.cm-footer-badges span{
-  display:inline-flex; align-items:center; gap: 8px;
-  padding: 8px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(31,31,31,.06);
-  background: rgba(234,212,216,.28);
-  color: var(--muted);
-  font-size: 12.5px;
-}
-.cm-footer-seo{
-  margin-top: 24px;
-  padding: 18px;
-  border-radius: var(--radius);
-  border: 1px solid rgba(31,31,31,.08);
-  background: rgba(250,249,247,.75);
-  box-shadow: var(--shadow-soft);
-}
-.cm-footer-seo p{
-  margin: 0;
-  color: var(--muted);
-  font-size: 13.5px;
-  line-height: 1.8;
-}
-.cm-footer-bottom{
-  margin-top: 26px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(31,31,31,.08);
-  display:flex;
-  flex-wrap:wrap;
-  gap: 12px;
-  align-items:center;
-  justify-content:space-between;
-  color: var(--muted);
-  font-size: 12.5px;
-}
-.cm-footer-bottom .cm-mini{
-  display:flex; flex-wrap:wrap; gap: 10px; align-items:center;
-}
-.cm-footer-bottom .cm-mini a{ font-size: 12.5px; }
-
-  /* Petit texte en sans-serif pour respirer (premium) */
-.cm-nav a,
-.cm-pill,
-.cm-trust small,
-.cm-card p,
-.cm-quote,
-.cm-person,
-.cm-footer,
-.cm-footer-links,
-.cm-footer-desc,
-.cm-note,
-details.cm-acc p,
-.cm-mock-title span{
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans";
-}
-
-  .cm-logo{
-    width: 44px;
-    height: 44px;
-    border-radius: 14px;
-    object-fit: contain;
-    background: rgba(250,249,247,.85);
-    border: 1px solid rgba(31,31,31,.06);
+  /* ===== WOW Block (doux) ===== */
+  .cm-wow{
+    padding: 26px;
+    padding-left: 34px;
+    padding-right: 34px;
+    border-radius: calc(var(--radius) + 6px);
+    border: 1px solid rgba(31,31,31,.08);
+    background:
+      radial-gradient(700px 260px at 20% 0%, rgba(234,212,216,.55), transparent 60%),
+      radial-gradient(700px 260px at 95% 10%, rgba(201,204,214,.55), transparent 60%),
+      rgba(250,249,247,.78);
     box-shadow: var(--shadow-soft);
-    padding: 6px;
+    display:grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 18px;
+    align-items:center;
   }
 
+  .cm-wow h3{
+    margin: 0 0 10px;
+    font-size: 20px;
+    letter-spacing: -0.3px;
+  }
 
+  .cm-wow p{
+    margin: 0;
+    color: var(--muted);
+    font-size: 14.5px;
+    line-height: 1.8;
+  }
+
+  .cm-wow-right{
+    background: rgba(250,249,247,.78);
+    border: 1px solid rgba(31,31,31,.07);
+    border-radius: var(--radius);
+    padding: 18px;
+  }
+
+  .cm-wow-right ul{
+    margin: 10px 0 0;
+    padding-left: 18px;
+    color: var(--muted);
+    font-size: 13.5px;
+    line-height: 1.9;
+  }
+
+  .cm-wow-cta{
+    margin-top: 14px;
+    display:flex;
+    flex-wrap:wrap;
+    gap: 10px;
+    align-items:center;
+  }
+
+  .cm-wow-cta small{
+    color: var(--muted);
+    font-size: 12.5px;
+  }
+
+  /* ===== Footer SEO ===== */
+  .cm-footer-wrap{
+    margin-top: 20px;
+    padding: 70px 0 64px;
+    border-top: 1px solid rgba(31,31,31,.08);
+    background:
+      radial-gradient(900px 380px at 15% 0%, rgba(234,212,216,.45), transparent 60%),
+      radial-gradient(900px 380px at 90% 10%, rgba(201,204,214,.45), transparent 60%),
+      rgba(250,249,247,.65);
+  }
+  .cm-footer-grid{
+    display:grid;
+    grid-template-columns: 1.2fr .9fr .9fr .9fr;
+    gap: 22px;
+  }
+  .cm-footer h3{
+    margin: 0 0 12px;
+    font-size: 14px;
+    letter-spacing: .2px;
+  }
+  .cm-footer a{
+    color: var(--muted);
+    text-decoration:none;
+  }
+  .cm-footer a:hover{ color: var(--ink); text-decoration:underline; }
+  .cm-footer-links{
+    margin:0; padding:0; list-style:none;
+    display:flex; flex-direction:column; gap: 10px;
+    color: var(--muted);
+    font-size: 13.5px;
+  }
+  .cm-footer-brand{
+    display:flex; gap: 12px; align-items:flex-start;
+  }
+  .cm-footer-brand .cm-mark{ flex: 0 0 auto; }
+  .cm-footer-desc{
+    margin: 10px 0 0;
+    color: var(--muted);
+    font-size: 13.5px;
+    line-height: 1.75;
+  }
+  .cm-footer-badges{
+    display:flex; flex-wrap:wrap; gap: 10px;
+    margin-top: 14px;
+  }
+  .cm-footer-badges span{
+    display:inline-flex; align-items:center; gap: 8px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(31,31,31,.06);
+    background: rgba(234,212,216,.28);
+    color: var(--muted);
+    font-size: 12.5px;
+  }
+  .cm-footer-seo{
+    margin-top: 24px;
+    padding: 18px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(31,31,31,.08);
+    background: rgba(250,249,247,.75);
+    box-shadow: var(--shadow-soft);
+  }
+  .cm-footer-seo p{
+    margin: 0;
+    color: var(--muted);
+    font-size: 13.5px;
+    line-height: 1.8;
+  }
+  .cm-footer-bottom{
+    margin-top: 26px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(31,31,31,.08);
+    display:flex;
+    flex-wrap:wrap;
+    gap: 12px;
+    align-items:center;
+    justify-content:space-between;
+    color: var(--muted);
+    font-size: 12.5px;
+  }
+  .cm-footer-bottom .cm-mini{
+    display:flex; flex-wrap:wrap; gap: 10px; align-items:center;
+  }
+  .cm-footer-bottom .cm-mini a{ font-size: 12.5px; }
+
+  /* Petit texte en sans-serif pour respirer (premium) */
+  .cm-nav a,
+  .cm-pill,
+  .cm-trust small,
+  .cm-card p,
+  .cm-quote,
+  .cm-person,
+  .cm-footer,
+  .cm-footer-links,
+  .cm-footer-desc,
+  .cm-note,
+  details.cm-acc p,
+  .cm-mock-title span{
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans";
+  }
 
   /* Responsive */
   @media (max-width: 560px){
@@ -585,67 +613,6 @@ details.cm-acc p,
     .cm-footer-grid{ grid-template-columns: 1fr; }
     .cm-wow{ grid-template-columns: 1fr; padding-left: 18px; padding-right: 18px; }
   }
-
-
-  /* ===== WOW Block (doux) ===== */
-.cm-wow{
-  padding: 26px;
-  padding-left: 34px;
-  padding-right: 34px;
-  border-radius: calc(var(--radius) + 6px);
-  border: 1px solid rgba(31,31,31,.08);
-  background:
-    radial-gradient(700px 260px at 20% 0%, rgba(234,212,216,.55), transparent 60%),
-    radial-gradient(700px 260px at 95% 10%, rgba(201,204,214,.55), transparent 60%),
-    rgba(250,249,247,.78);
-  box-shadow: var(--shadow-soft);
-  display:grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 18px;
-  align-items:center;
-}
-
-.cm-wow h3{
-  margin: 0 0 10px;
-  font-size: 20px;
-  letter-spacing: -0.3px;
-}
-
-.cm-wow p{
-  margin: 0;
-  color: var(--muted);
-  font-size: 14.5px;
-  line-height: 1.8;
-}
-
-.cm-wow-right{
-  background: rgba(250,249,247,.78);
-  border: 1px solid rgba(31,31,31,.07);
-  border-radius: var(--radius);
-  padding: 18px;
-}
-
-.cm-wow-right ul{
-  margin: 10px 0 0;
-  padding-left: 18px;
-  color: var(--muted);
-  font-size: 13.5px;
-  line-height: 1.9;
-}
-
-.cm-wow-cta{
-  margin-top: 14px;
-  display:flex;
-  flex-wrap:wrap;
-  gap: 10px;
-  align-items:center;
-}
-
-.cm-wow-cta small{
-  color: var(--muted);
-  font-size: 12.5px;
-}
-  
 </style>
 
 <div class="cm-wrap" id="top">
@@ -653,90 +620,91 @@ details.cm-acc p,
 
     <!-- Topbar -->
     <div class="cm-topbar">
-      <a class="cm-brand">
-          <div class="cm-mark">CM</div>
+      <a class="cm-brand" href="#top" aria-label="CarnetMariage">
+        <div class="cm-mark">CM</div>
         <div>
           <strong>CarnetMariage</strong>
-          <span>Carnet de mariage · guidé & apaisant</span>
+          <span>Carnet privé de mariage · guidé & apaisant</span>
         </div>
       </a>
-      <nav class="cm-nav">
+
+      <nav class="cm-nav" aria-label="Navigation">
         <a href="#contenu">Ce que tu obtiens</a>
-        <a href="#demo">Démo</a>
+        <a href="#demo">Aperçu</a>
         <a href="#avis">Avis</a>
         <a href="#prix">Prix</a>
-        <a class="cm-btn cm-btn-primary" href="/start">Commencer</a>      
+        <a class="cm-btn cm-btn-primary" href="/start">Créer mon carnet</a>
       </nav>
     </div>
 
     <!-- Hero -->
-    <section class="cm-hero">
+    <section class="cm-hero" aria-label="Hero">
       <div class="cm-hero-card">
-        <div class="cm-pill">✨ Un carnet guidé pour organiser sans stress</div>
+        <div class="cm-pill">✨ Ton carnet se génère automatiquement · lien privé</div>
 
         <h1>
-          Et si organiser ton mariage
-          devenait enfin
-          <span class="cm-script">simple</span>
-          — et doux ?
+          Ton <span class="cm-script">carnet privé</span> de mariage,
+          déjà structuré pour toi — en 1 minute.
         </h1>
 
         <p>
-          Tu veux profiter des préparatifs… sans avoir tout dans la tête ?
+          Tu veux profiter des préparatifs… sans tout porter dans ta tête ?
           <br/>
-          En quelques questions simples, ton CarnetMariage prend forme.
-          Tu vois un aperçu, tu ressens si c’est fait pour toi,
-          et seulement ensuite tu choisis de débloquer.
+          Réponds à quelques questions simples : on génère ton carnet (budget, étapes, décisions, suivi),
+          et tu reçois un <b>lien privé</b> pour y accéder.
         </p>
 
         <div class="cm-hero-actions">
-          <!-- CTA principal (ton lien Stripe/WP ici) -->
-          <a class="cm-btn cm-btn-primary" href="/start">Commencer · 1 min</a>
+          <a class="cm-btn cm-btn-primary" href="/start">Créer mon carnet · 1 min</a>
+
           <p style="margin:12px 0 0;font-family:system-ui;color:#5d5d5d;font-size:13px;line-height:1.7;">
-            🔒 Sans engagement · ⏱️ 1 minute · aperçu avant de débloquer
+            🔒 Lien privé · ⏱️ 1 minute · accès immédiat après déblocage
           </p>
-         <a class="cm-btn cm-btn-secondary" href="#demo">Voir un aperçu</a>
+
+          <a class="cm-btn cm-btn-secondary" href="#demo">Voir un aperçu</a>
         </div>
 
-      <div class="cm-trust">
-        <small>✨ Guidé pas à pas</small>
-        <small>👀 Aperçu avant décision</small>
-        <small>🌿 Moins de charge mentale</small>
-      </div>
+        <div class="cm-trust" aria-label="Points clés">
+          <small>✨ Guidé pas à pas</small>
+          <small>🔒 Lien privé</small>
+          <small>🌿 Moins de charge mentale</small>
+        </div>
       </div>
 
       <!-- Mockup / screenshots -->
-      <div class="cm-mock" id="demo">
+      <div class="cm-mock" id="demo" aria-label="Aperçu du carnet">
         <div class="cm-mock-title">
           <div>
-            <strong>Aperçu de ton carnet</strong><br/>
+            <strong>Aperçu du carnet</strong><br/>
             <span style="color:var(--muted);font-size:13px;">
-              Un aperçu réel de ce que tu vas utiliser au quotidien
-              (budget, étapes, décisions, suivi…)
+              Ce que tu utilises au quotidien : budget, étapes, décisions, suivi…
             </span>
           </div>
           <div class="cm-windowdots" aria-hidden="true"><i></i><i></i><i></i></div>
         </div>
 
-        <!-- Option 1: une image -->
-        <img src="https://carnetmariage.com/wp-content/uploads/2025/12/Screenshot-2025-12-25-at-19.16.03.png" alt="Aperçu du planner Notion CarnetMariage" style="width:100%;border-radius:18px;border:1px solid rgba(31,31,31,.08);" />
-        <img src="https://carnetmariage.com/wp-content/uploads/2025/12/Screenshot-2025-12-25-at-18.55.24.png" alt="Aperçu du planner Notion CarnetMariage" style="width:100%;border-radius:18px;border:1px solid rgba(31,31,31,.08);" />
-        <img src="https://carnetmariage.com/wp-content/uploads/2025/12/Screenshot-2025-12-25-at-18.55.35.png" alt="Aperçu du planner Notion CarnetMariage" style="width:100%;border-radius:18px;border:1px solid rgba(31,31,31,.08);" />
-        <img src="https://carnetmariage.com/wp-content/uploads/2025/12/Screenshot-2025-12-25-at-18.55.10.png" alt="Aperçu du planner Notion CarnetMariage" style="width:100%;border-radius:18px;border:1px solid rgba(31,31,31,.08);" />
-
-        
-
-          </div>
-        </div>
+        <!-- Tes screenshots -->
+        <img src="https://carnetmariage.com/wp-content/uploads/2025/12/Screenshot-2025-12-25-at-19.16.03.png"
+             alt="Aperçu CarnetMariage — tableau budget"
+             style="width:100%;border-radius:18px;border:1px solid rgba(31,31,31,.08);" />
+        <img src="https://carnetmariage.com/wp-content/uploads/2025/12/Screenshot-2025-12-25-at-18.55.24.png"
+             alt="Aperçu CarnetMariage — étapes et tâches"
+             style="width:100%;border-radius:18px;border:1px solid rgba(31,31,31,.08);" />
+        <img src="https://carnetmariage.com/wp-content/uploads/2025/12/Screenshot-2025-12-25-at-18.55.35.png"
+             alt="Aperçu CarnetMariage — décisions et priorités"
+             style="width:100%;border-radius:18px;border:1px solid rgba(31,31,31,.08);" />
+        <img src="https://carnetmariage.com/wp-content/uploads/2025/12/Screenshot-2025-12-25-at-18.55.10.png"
+             alt="Aperçu CarnetMariage — suivi global"
+             style="width:100%;border-radius:18px;border:1px solid rgba(31,31,31,.08);" />
       </div>
     </section>
 
     <!-- Ce que tu obtiens -->
-    <section class="cm-section" id="contenu">
+    <section class="cm-section" id="contenu" aria-label="Contenu">
       <h2>Ce que tu obtiens</h2>
       <p class="lead">
-        CCe n’est pas “juste un outil”.
-        C’est un petit espace qui te remet la tête au calme :
+        Ce n’est pas “juste un outil”.
+        C’est un espace clair qui te remet la tête au calme :
         tu sais quoi faire, quand le faire, et où tout ranger.
         Et surtout… tu n’as plus besoin de porter tout ça seule.
       </p>
@@ -745,11 +713,11 @@ details.cm-acc p,
         <div class="cm-card">
           <div class="cm-icon">🗂️</div>
           <h3>Tout centralisé</h3>
-          <p>Tout ce qui te rassure est au même endroit. Tu ouvres, tu respires, tu vois clair.</p>
+          <p>Budget, étapes, décisions… tout est au même endroit. Tu ouvres, tu respires, tu vois clair.</p>
         </div>
         <div class="cm-card">
           <div class="cm-icon">🗓️</div>
-          <h3>Timeline claire</h3>
+          <h3>Étapes & rappel</h3>
           <p>Tu sais quoi faire maintenant, et ce qui viendra après. Fini la peur “d’oublier un truc”.</p>
         </div>
         <div class="cm-card">
@@ -761,10 +729,10 @@ details.cm-acc p,
     </section>
 
     <!-- Avant / Après -->
-    <section class="cm-section">
+    <section class="cm-section" aria-label="Avant Après">
       <h2>Avant / Après</h2>
       <p class="lead">
-        On connaît ce stress silencieux. Ce planner est fait pour l’éteindre.
+        On connaît ce stress silencieux. CarnetMariage est fait pour l’éteindre.
         <br/>Tu t’es déjà réveillée en te disant : “j’oublie forcément un truc” ?
       </p>
 
@@ -781,7 +749,7 @@ details.cm-acc p,
           <div class="cm-badge">🌿 Après</div>
           <ul class="cm-list">
             <li>Tu sais où tu en es, sans te poser 1000 questions.</li>
-            <li>Tu avances avec une timeline claire, un petit pas après l’autre.</li>
+            <li>Tu avances avec une structure claire, un petit pas après l’autre.</li>
             <li>Tu te sens plus calme — et tu recommences à profiter des préparatifs.</li>
           </ul>
         </div>
@@ -789,9 +757,8 @@ details.cm-acc p,
     </section>
 
     <!-- Avis -->
-    <section class="cm-section" id="avis">
+    <section class="cm-section" id="avis" aria-label="Avis">
       <h2>Elles l’ont utilisé, et ça change tout</h2>
-
 
       <div class="cm-grid-3">
         <div class="cm-card">
@@ -799,7 +766,7 @@ details.cm-acc p,
           <div class="cm-person"><div class="cm-avatar">L</div> Léa · future mariée</div>
         </div>
         <div class="cm-card">
-          <p class="cm-quote">“Je me suis sentie guidée. Plus de panique le soir, je sais ce que je dois faire.”</p>
+          <p class="cm-quote">“Je me suis sentie guidée. Plus de panique le soir, je sais ce que je fais.”</p>
           <div class="cm-person"><div class="cm-avatar">S</div> Sara · mariage 2026</div>
         </div>
         <div class="cm-card">
@@ -809,49 +776,48 @@ details.cm-acc p,
       </div>
     </section>
 
-
+    <!-- WOW -->
     <section class="cm-section" aria-label="Moment de calme">
       <div class="cm-wow">
         <div>
           <div class="cm-pill">🌿 Un moment de calme dans tes préparatifs</div>
           <h3>
-            Imagine… ouvrir ton planner et sentir que
+            Imagine… ouvrir ton carnet et sentir que
             <span class="cm-script">tout est à sa place</span>.
           </h3>
           <p>
             Pas besoin de tout gérer dans ta tête. Tu avances doucement, un petit pas après l’autre.
-            Ce planner est là pour te rassurer : tu sais quoi faire aujourd’hui, ce qui vient ensuite,
+            Ton carnet te rassure : tu sais quoi faire aujourd’hui, ce qui vient ensuite,
             et tu peux enfin profiter des préparatifs sans pression.
           </p>
-    
+
           <div class="cm-wow-cta">
-            <a class="cm-btn cm-btn-primary" href="/start">Commencer · 1 min</a>
-            <small>Aperçu avant paiement · Accès immédiat après déblocage</small>
+            <a class="cm-btn cm-btn-primary" href="/start">Créer mon carnet · 1 min</a>
+            <small>🔒 Lien privé · Accès immédiat après déblocage</small>
           </div>
         </div>
-    
+
         <div class="cm-wow-right">
           <strong style="display:block;">Ce que tu ressens (vraiment)</strong>
           <ul>
             <li>Tu respires : tu sais où tu en es.</li>
-            <li>Tu te sens guidée : la timeline te montre la suite.</li>
-            <li>Tu te détends : le budget est clair, les prestataires sont suivis.</li>
+            <li>Tu te sens guidée : les étapes te montrent la suite.</li>
+            <li>Tu te détends : le budget est clair, le suivi est simple.</li>
           </ul>
         </div>
       </div>
     </section>
 
     <!-- Pricing -->
-    <section class="cm-section" id="prix">
+    <section class="cm-section" id="prix" aria-label="Prix">
       <h2>Débloquer ton CarnetMariage</h2>
-
 
       <div class="cm-pricing">
         <div class="cm-pricebox">
           <div class="cm-price-top">
             <div>
               <p class="cm-price-title">CarnetMariage · Premium</p>
-              <div class="cm-pill">✨ Carnet prêt à l’emploi · accès immédiat</div>
+              <div class="cm-pill" style="margin-top:10px;">✨ Lien privé · accès immédiat</div>
             </div>
             <div class="cm-pill" title="Paiement sécurisé">🔒 Paiement sécurisé</div>
           </div>
@@ -859,20 +825,19 @@ details.cm-acc p,
           <div class="cm-price">27€ <small>paiement unique</small></div>
 
           <a class="cm-btn cm-btn-primary" style="width:100%;margin-top:10px;" href="/start">
-            Commencer (puis débloquer)
+            Créer mon carnet (puis débloquer)
           </a>
+
           <div class="cm-note">
             🌸 Accès immédiat · Paiement sécurisé · Mini guide inclus · Support par email
           </div>
 
           <ul class="cm-includes">
-            <li><i></i> Carnet de mariage complet (prêt à l’emploi)</li>
-            <li><i></i> Budget · décisions · étapes · suivi</li>
-            <li><i></i> Guide simple pour bien démarrer</li>
-            <li><i></i> Utilisable seule ou à deux</li>
+            <li><i></i> Carnet privé prêt à l’emploi</li>
+            <li><i></i> Budget · étapes · décisions · suivi</li>
+            <li><i></i> Mini guide simple pour bien démarrer</li>
+            <li><i></i> Utilisable seule ou à deux (partage du lien)</li>
           </ul>
-
-
         </div>
 
         <div class="cm-card">
@@ -887,162 +852,157 @@ details.cm-acc p,
           <h3 style="margin:0 0 8px;">Ce que ça t’apporte</h3>
           <ul class="cm-list">
             <li><b>Clarté mentale :</b> tout est centralisé.</li>
-            <li><b>Moins d’oublis :</b> une timeline claire.</li>
-            <li><b>Zéro surprise :</b> budget & prestataires suivis.</li>
+            <li><b>Moins d’oublis :</b> des étapes claires.</li>
+            <li><b>Zéro surprise :</b> budget & suivi simples.</li>
           </ul>
 
           <div style="height:14px;"></div>
-
           <div class="cm-pill">🌷 Doux, minimal, rassurant</div>
         </div>
       </div>
     </section>
 
     <!-- Bonus -->
-    <section class="cm-section">
+    <section class="cm-section" aria-label="Bonus">
       <h2>Bonus</h2>
-
 
       <div class="cm-bonus">
         <div class="cm-card">
           <div class="cm-icon">🎁</div>
           <h3>Mini guide “prise en main”</h3>
-          <p>Ultra simple : dupliquer, organiser, personnaliser — sans se perdre dans Notion.</p>
+          <p>Ultra simple : démarrer, personnaliser, et rester organisée — sans te prendre la tête.</p>
         </div>
         <div class="cm-card">
           <div class="cm-icon">✨</div>
           <h3>Pack templates (option futur)</h3>
-          <p>Checklists, scripts messages prestataires, modèles de budget… parfait en upsell.</p>
+          <p>Checklists, scripts messages, modèles de budget… parfait en upsell.</p>
         </div>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section class="cm-section">
+    <section class="cm-section" aria-label="FAQ">
       <h2>FAQ</h2>
 
       <div class="cm-faq">
         <details class="cm-acc">
-          <summary>Est-ce que je dois connaître Notion ?</summary>
-          <p>Non, le mini guide te montre exactement quoi faire. Tu dupliques, tu remplis, et c’est parti.</p>
+          <summary>Comment ça marche ?</summary>
+          <p>Tu réponds à quelques questions, puis on génère ton CarnetMariage. Tu reçois un lien privé pour y accéder.</p>
         </details>
 
         <details class="cm-acc">
           <summary>Je peux l’utiliser à deux ?</summary>
-          <p>Oui. C’est même l’un des meilleurs usages : chacun sait quoi faire, sans se courir après.</p>
+          <p>Oui. Tu peux partager le lien privé à ton/ta partenaire pour avancer ensemble, sans vous courir après.</p>
         </details>
 
         <details class="cm-acc">
           <summary>Si je change la date, tout se met à jour ?</summary>
-          <p>Oui. Tu ajustes la date et tu retrouves une organisation logique, sans tout refaire.</p>
+          <p>Oui. Tu ajustes la date, et les étapes s’alignent automatiquement (timeline, priorités, suivi).</p>
         </details>
 
         <details class="cm-acc">
-          <summary>Comment je reçois le planner ?</summary>
-          <p>Après paiement, tu reçois un lien pour dupliquer le Notion + le mini guide (PDF ou page Notion).</p>
+          <summary>Comment je reçois l’accès après paiement ?</summary>
+          <p>Après déblocage, tu reçois immédiatement ton lien privé et l’accès complet à ton carnet.</p>
         </details>
       </div>
     </section>
 
-<footer class="cm-footer cm-footer-wrap" aria-label="Footer CarnetMariage">
-  <div class="cm-container">
+    <!-- Footer -->
+    <footer class="cm-footer cm-footer-wrap" aria-label="Footer CarnetMariage">
+      <div class="cm-container">
+        <div class="cm-footer-grid">
 
-    <div class="cm-footer-grid">
-
-      <!-- Col 1: Brand + Trust -->
-      <div>
-        <div class="cm-footer-brand">
-          <div class="cm-mark">CM</div>
+          <!-- Col 1: Brand + Trust -->
           <div>
-            <strong style="display:block;font-size:15px;">CarnetMariage</strong>
-            <span style="display:block;color:var(--muted);font-size:12.5px;margin-top:2px;">
-              Planner Notion · organisation douce & chic
-            </span>
+            <div class="cm-footer-brand">
+              <div class="cm-mark">CM</div>
+              <div>
+                <strong style="display:block;font-size:15px;">CarnetMariage</strong>
+                <span style="display:block;color:var(--muted);font-size:12.5px;margin-top:2px;">
+                  Carnet privé · organisation douce & chic
+                </span>
 
-            <p class="cm-footer-desc">
-              CarnetMariage t’aide à organiser ton mariage sans surcharge mentale : étapes, décisions, budget
-              et suivi — tout au même endroit. Tu réponds à quelques questions, et on te génère un
-              <b>carnet privé</b> prêt à l’emploi, accessible via <b>lien</b>.
-            </p>
+                <p class="cm-footer-desc">
+                  CarnetMariage t’aide à organiser ton mariage sans surcharge mentale : étapes, décisions, budget et suivi —
+                  tout au même endroit. Tu réponds à quelques questions, et on te génère un <b>carnet privé</b>
+                  prêt à l’emploi, accessible via <b>lien</b>.
+                </p>
 
-            <div class="cm-footer-badges">
-              <span>🔒 Paiement sécurisé</span>
-              <span>⚡ Accès immédiat</span>
-              <span>📩 Support par email</span>
-              <span>🗂️ Duplicable sur Notion</span>
+                <div class="cm-footer-badges">
+                  <span>🔒 Paiement sécurisé</span>
+                  <span>⚡ Accès immédiat</span>
+                  <span>📩 Support par email</span>
+                  <span>🔗 Lien privé</span>
+                </div>
+              </div>
             </div>
+          </div>
+
+          <!-- Col 2: Produit -->
+          <div>
+            <h3>Le carnet</h3>
+            <ul class="cm-footer-links">
+              <li><a href="#contenu">Ce que tu obtiens</a></li>
+              <li><a href="#demo">Aperçu</a></li>
+              <li><a href="#prix">Débloquer</a></li>
+              <li><a href="#avis">Avis</a></li>
+              <li><a href="#top">Retour en haut</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 3: Ressources SEO -->
+          <div>
+            <h3>Ressources</h3>
+            <ul class="cm-footer-links">
+              <li><a href="/blog">Blog mariage</a></li>
+              <li><a href="/blog/organisation-mariage">Organisation de mariage</a></li>
+              <li><a href="/blog/checklist-mariage">Checklist mariage</a></li>
+              <li><a href="/blog/budget-mariage">Budget mariage</a></li>
+              <li><a href="/blog/timeline-mariage">Timeline mariage</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 4: Confiance + Légal -->
+          <div>
+            <h3>Aide & légal</h3>
+            <ul class="cm-footer-links">
+              <li><a href="mailto:support@carnetmariage.com">support@carnetmariage.com</a></li>
+              <li><a href="/faq">FAQ</a></li>
+              <li><a href="/mentions-legales">Mentions légales</a></li>
+              <li><a href="/cgv">CGV</a></li>
+              <li><a href="/confidentialite">Politique de confidentialité</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Bloc SEO -->
+        <div class="cm-footer-seo">
+          <p>
+            <strong>CarnetMariage</strong> est un <strong>carnet de mariage privé</strong> conçu pour les futures mariées
+            qui veulent une organisation claire, minimaliste et apaisante. Il inclut une structure d’étapes,
+            un suivi <strong>budget</strong>, des espaces de <strong>décisions</strong> et une vue d’ensemble des priorités
+            pour avancer sereinement jusqu’au jour J. Que tu prépares un mariage intime ou une grande réception,
+            CarnetMariage t’aide à <strong>tout centraliser</strong> et à <strong>ne rien oublier</strong> — sans te noyer dans des fichiers.
+          </p>
+        </div>
+
+        <!-- Bas de footer -->
+        <div class="cm-footer-bottom">
+          <div>© <span id="cm-year"></span> CarnetMariage.com · Tous droits réservés</div>
+          <div class="cm-mini">
+            <span>✨ Prix de lancement possible</span>
+            <span>·</span>
+            <a href="#prix">Débloquer</a>
           </div>
         </div>
       </div>
-
-      <!-- Col 2: Produit -->
-      <div>
-        <h3>Le planner</h3>
-        <ul class="cm-footer-links">
-          <li><a href="#contenu">Ce que tu obtiens</a></li>
-          <li><a href="#demo">Démo Notion</a></li>
-          <li><a href="#prix">Accéder au planner</a></li>
-          <li><a href="#avis">Avis</a></li>
-          <li><a href="#top">Retour en haut</a></li>
-        </ul>
-      </div>
-
-      <!-- Col 3: Ressources SEO (prévu pour le blog) -->
-      <div>
-        <h3>Ressources</h3>
-        <ul class="cm-footer-links">
-          <!-- Mets tes futures pages WP ici (quand le blog est prêt) -->
-          <li><a href="/blog">Blog mariage</a></li>
-          <li><a href="/blog/organisation-mariage">Organisation de mariage</a></li>
-          <li><a href="/blog/checklist-mariage">Checklist mariage</a></li>
-          <li><a href="/blog/budget-mariage">Budget mariage</a></li>
-          <li><a href="/blog/timeline-mariage">Timeline mariage</a></li>
-        </ul>
-      </div>
-
-      <!-- Col 4: Confiance + Légal -->
-      <div>
-        <h3>Aide & légal</h3>
-        <ul class="cm-footer-links">
-          <li><a href="mailto:support@carnetmariage.com">support@carnetmariage.com</a></li>
-          <li><a href="/faq">FAQ</a></li>
-          <li><a href="/mentions-legales">Mentions légales</a></li>
-          <li><a href="/cgv">CGV</a></li>
-          <li><a href="/confidentialite">Politique de confidentialité</a></li>
-        </ul>
-      </div>
-
-    </div>
-
-    <!-- Bloc SEO (texte naturel, pas spam) -->
-    <div class="cm-footer-seo">
-      <p>
-        <strong>CarnetMariage</strong> est un <strong>planner de mariage sur Notion</strong> conçu pour les futures mariées
-        qui veulent une organisation claire, minimaliste et apaisante. Le template inclut une <strong>timeline</strong>,
-        un suivi <strong>budget</strong>, la gestion des <strong>prestataires</strong> et une vue d’ensemble des priorités
-        pour avancer sereinement jusqu’au jour J. Que tu prépares un mariage intime ou une grande réception,
-        le planner t’aide à <strong>tout centraliser</strong> et à <strong>ne rien oublier</strong> — sans te noyer dans des fichiers.
-      </p>
-    </div>
-
-    <!-- Bas de footer -->
-    <div class="cm-footer-bottom">
-      <div>© <span id="cm-year"></span> CarnetMariage.com · Tous droits réservés</div>
-      <div class="cm-mini">
-        <span>✨ Prix de lancement possible</span>
-        <span>·</span>
-        <a href="#prix">Accéder au planner</a>
-      </div>
-    </div>
-
-  </div>
-</footer>
+    </footer>
 
   </div>
 </div>
 
 <script>
-  // Année auto
   (function(){
     var y = new Date().getFullYear();
     var el = document.getElementById("cm-year");
