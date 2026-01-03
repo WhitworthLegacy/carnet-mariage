@@ -281,7 +281,22 @@
   `;
 
   document.getElementById("pay").onclick = ()=>{
-    alert("Stripe sera branché ici (ok MVP)");
+    const data = JSON.parse(localStorage.getItem("cm_onboarding") || "{}");
+  
+    // ✅ URL de ton Web App Apps Script (après déploiement)
+    const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbx9pFxMg0UqiEaHuQf3ILPYPizEwwXo2tCtuQzgH0fmlzA9FgmDoNvPCVqAvGsXDnf3Ig/exec";
+  
+    const params = new URLSearchParams({
+      r: "begin",
+      email: data.email || "",
+      prenom1: data.prenom1 || "",
+      prenom2: data.prenom2 || "",
+      weddingDate: data.weddingDate || "",
+      cancelUrl: window.location.href // revient sur onboarding-3 si annulation
+    });
+  
+    // Redirect vers Apps Script -> Apps Script redirect vers Stripe
+    window.location.href = `${WEBAPP_URL}?${params.toString()}`;
   };
 })();
 
