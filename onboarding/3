@@ -5,8 +5,8 @@
   width:100vw;
   margin-left:calc(50% - 50vw);
   min-height: 100vh;
-    min-height: 100svh;
-    min-height: 100dvh;
+  min-height: 100svh;
+  min-height: 100dvh;
   display:grid;
   place-items:center;
   padding:28px 18px;
@@ -49,6 +49,10 @@
   cursor:pointer;
   box-shadow: 0 14px 34px rgba(216,167,177,.35), 0 10px 26px rgba(0,0,0,.06);
   transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .cmOB-btn:hover{
@@ -64,6 +68,24 @@
   outline:none;
   box-shadow: 0 0 0 4px rgba(216,167,177,.22), 0 18px 44px rgba(216,167,177,.40);
 }
+
+.cmOB-btn:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+  filter: grayscale(0.2);
+}
+
+/* Loader Styles */
+.cm-loader {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(31,31,31,0.2);
+  border-top-color: rgba(31,31,31,0.9);
+  border-radius: 50%;
+  animation: cm-spin 0.8s linear infinite;
+  display: none;
+}
+@keyframes cm-spin { to { transform: rotate(360deg); } }
 
 /* ===== Animations douces ===== */
 .cm-appear{
@@ -146,7 +168,17 @@
   box-shadow:0 20px 60px rgba(0,0,0,.15);
   text-align:center;
   font-family:system-ui;
+}
 
+#cmDemoNext{
+  margin-top:20px;
+  padding:12px 30px;
+  border-radius:999px;
+  border:none;
+  background:#1f1f1f;
+  color:white;
+  cursor:pointer;
+  font-weight:600;
 }
 
 .cm-demo-link{
@@ -154,15 +186,12 @@
   width:100%;
   margin-top:10px;
   text-align:center;
-
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
   font-size:14px;
   color: rgba(31,31,31,.6);
-
   text-decoration: underline;
   text-decoration-thickness: 1.5px;
   text-underline-offset: 4px;
-
   cursor:pointer;
   transition: color .15s ease, opacity .15s ease;
 }
@@ -175,7 +204,6 @@
 .cm-micro{
   margin-top:6px;
   text-align:center;
-
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
   font-size:12.5px;
   color: rgba(31,31,31,.55);
@@ -185,8 +213,6 @@
 @media (max-width:640px){
   .cm-preview{ grid-template-columns: 1fr; }
 }
-
-
 </style>
 
 <div class="cmOB">
@@ -201,7 +227,6 @@
 
     <div id="summary" class="cm-appear cm-delay-3"></div>
 
-
     <h2 class="cm-appear cm-delay-3" style="margin-top:28px;">
       À quoi va ressembler votre carnet ✨
     </h2>
@@ -212,7 +237,6 @@
     </p>
 
     <div class="cm-preview cm-appear cm-delay-3">
-
       <div class="cm-preview-card locked">
         <div class="cm-preview-title">💸 Budget</div>
         <p>Visualisez ce qui est prévu, payé et restant.</p>
@@ -236,26 +260,23 @@
         <p>Avancez étape par étape, sans rien oublier.</p>
         <span class="cm-lock">🔒 Débloqué après accès</span>
       </div>
-    
     </div>
 
+    <p class="cm-appear cm-delay-3" style="margin-top:20px;font-family:system-ui;color:#5d5d5d;">
+      Tout est prêt. Il ne reste plus qu’à débloquer votre espace.
+    </p>
 
-<p class="cm-appear cm-delay-3" style="margin-top:20px;font-family:system-ui;color:#5d5d5d;">
-  Tout est prêt. Il ne reste plus qu’à débloquer votre espace.
-</p>
-
-
-<div id="cmDemo" class="cm-demo hidden">
-  <div class="cm-demo-content">
-    <div id="cmDemoStep"></div>
-    <button id="cmDemoNext">Continuer</button>
-  </div>
-</div>
+    <div id="cmDemo" class="cm-demo hidden">
+      <div class="cm-demo-content">
+        <div id="cmDemoStep"></div>
+        <button id="cmDemoNext">Continuer</button>
+      </div>
+    </div>
 
     <button class="cmOB-btn cm-appear cm-delay-3" id="pay">
-      Je veux organiser sereinement · 27€
+      <div class="cm-loader" id="loader"></div>
+      <span id="btnText">Je veux organiser sereinement · 27€</span>
     </button>
-
     
     <div class="cm-micro cm-appear cm-delay-3">
       Paiement unique · Accès immédiat · Sans abonnement
@@ -268,22 +289,32 @@
   </div>
 </div>
 
-
 <script>
 (function(){
   const data = JSON.parse(localStorage.getItem("cm_onboarding") || "{}");
 
   const s = document.getElementById("summary");
-  s.innerHTML = `
-    <div class="cmOB-box"><b>Couple</b><br>${data.prenom1 || "—"} & ${data.prenom2 || "—"}</div>
-    <div class="cmOB-box"><b>Date</b><br>${data.weddingDate || "—"}</div>
-    <div class="cmOB-box"><b>Email</b><br>${data.email || "—"}</div>
-  `;
+  if(s) {
+    s.innerHTML = `
+      <div class="cmOB-box"><b>Couple</b><br>${data.prenom1 || "—"} & ${data.prenom2 || "—"}</div>
+      <div class="cmOB-box"><b>Date</b><br>${data.weddingDate || "—"}</div>
+      <div class="cmOB-box"><b>Email</b><br>${data.email || "—"}</div>
+    `;
+  }
 
-  document.getElementById("pay").onclick = ()=>{
+  const btn = document.getElementById("pay");
+  const loader = document.getElementById("loader");
+  const btnText = document.getElementById("btnText");
+
+  btn.onclick = ()=>{
+    // UI Feedback
+    btn.disabled = true;
+    loader.style.display = "block";
+    btnText.innerText = "Préparation de votre espace...";
+
     const data = JSON.parse(localStorage.getItem("cm_onboarding") || "{}");
   
-    // ✅ URL de ton Web App Apps Script (après déploiement)
+    // ✅ URL de ton Web App Apps Script
     const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbx9pFxMg0UqiEaHuQf3ILPYPizEwwXo2tCtuQzgH0fmlzA9FgmDoNvPCVqAvGsXDnf3Ig/exec";
   
     const params = new URLSearchParams({
@@ -292,14 +323,12 @@
       prenom1: data.prenom1 || "",
       prenom2: data.prenom2 || "",
       weddingDate: data.weddingDate || "",
-      cancelUrl: window.location.href // revient sur onboarding-3 si annulation
+      cancelUrl: window.location.href 
     });
   
-    // Redirect vers Apps Script -> Apps Script redirect vers Stripe
     window.location.href = `${WEBAPP_URL}?${params.toString()}`;
   };
 })();
-
 
 (function(){
   const steps = [
@@ -325,7 +354,8 @@
   const modal = document.getElementById("cmDemo");
   const stepBox = document.getElementById("cmDemoStep");
 
-  document.getElementById("openDemo").onclick = ()=>{
+  document.getElementById("openDemo").onclick = (e)=>{
+    e.preventDefault();
     modal.classList.remove("hidden");
     stepBox.innerHTML = steps[0].html;
   };
@@ -340,5 +370,4 @@
     stepBox.innerHTML = steps[i].html;
   };
 })();
-
 </script>
